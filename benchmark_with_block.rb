@@ -1,11 +1,13 @@
 def benchmark
-  # Your benchmarking code goes here.
+ start_time = Time.now
+ #checking if the block given to our method using Kernel method which returns true/false
+ yield if block_given?
+ end_time = Time.now
+ end_time - start_time  
 end
  
-# Be careful, pasting this into IRB will take a long time to print.
-# It's a loooong string. :)
 long_string = "apple"*100000000
- 
+ #passing a "long_string.reverse" block to benchmark method and assigning it to running_time
 running_time = benchmark { long_string.reverse }
  
-puts "string.reverse took #{running_time} seconds to run"
+puts "string.reverse took #{running_time} seconds to run."
